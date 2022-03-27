@@ -71,7 +71,7 @@ class _ShowCoursesState extends State<showCoursesEnd>
                 title: Text(widget.years + ' ' + widget.yearX,
                     style: TextStyle(
                         fontFamily: 'Kufi',
-                        fontSize: 15,
+                        fontSize: MediaQuery.of(context).size.width * 0.037,
                         fontWeight: FontWeight.bold)),
                 flexibleSpace: Container(
                   decoration: value.getTheme() == ThemeData.light().copyWith()
@@ -121,25 +121,33 @@ class _ShowCoursesState extends State<showCoursesEnd>
                         Text(' المادة : ' + widget.courseName,
                             style: TextStyle(
                                 fontFamily: 'Kufi',
-                                fontSize: 15,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.037,
                                 fontWeight: FontWeight.bold)),
                         Text(widget.years + '   : الشهادة',
                             style: TextStyle(
                                 fontFamily: 'Kufi',
-                                fontSize: 15,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.037,
                                 fontWeight: FontWeight.bold)),
                         widget.sp != ''
                             ? Text(' الشعبة : ' + widget.sp,
                                 style: TextStyle(
                                     fontFamily: 'Kufi',
-                                    fontSize: 15,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.037,
                                     fontWeight: FontWeight.bold))
                             : Text(''),
                         Text(' الموسم الدراسي : ' + widget.yearX,
                             style: TextStyle(
                                 fontFamily: 'Kufi',
-                                fontSize: 15,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.037,
                                 fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          height: 20, //Use of SizedBox
+                        ),
                         GetCourses(widget.courseName, widget.years, '', '',
                             widget.sp, widget.yearX),
                         SizedBox(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myEduApp/main/devicesType.dart';
 import 'package:myEduApp/main/theme.dart';
 import 'package:provider/provider.dart';
 import 'dropDownListX.dart';
@@ -15,8 +16,11 @@ class listCoursesBac extends StatefulWidget {
 class _FirstYearsState extends State<listCoursesBac> {
   String speciality = '_';
   String yearX = '';
+  devicesType _devicesType = new devicesType();
+
   @override
   Widget build(BuildContext context) {
+    String devType = _devicesType.getDeviceType();
     return Consumer<ThemeProvider>(builder: (context, value, child) {
       return MaterialApp(
         theme: value.getTheme(),
@@ -82,19 +86,29 @@ class _FirstYearsState extends State<listCoursesBac> {
                 children: <Widget>[
                   SizedBox(
                     //Use of SizedBox
-                    height: 20,
+                    height: 10,
                   ),
-                  Text(
-                    'مواضيع شهادة البكالوريا',
-                    style: new TextStyle(
-                        fontFamily: 'Kufi',
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  devType == 'isPhone'
+                      ? Text(
+                          'مواضيع شهادة البكالوريا',
+                          style: new TextStyle(
+                              fontFamily: 'Kufi',
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.057,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          'مواضيع شهادة البكالوريا',
+                          style: new TextStyle(
+                              fontFamily: 'Kufi',
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.03,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
                   SizedBox(
-                    //Use of SizedBox
-                    height: 20,
+                    height: 35, //Use of SizedBox
                   ),
                   SizedBox(
                     height: 05, //Use of SizedBox

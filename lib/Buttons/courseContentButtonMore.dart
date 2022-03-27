@@ -25,50 +25,48 @@ class CourseContentButtonMore extends StatelessWidget {
       print(e);
     }
 
-    return Container(
-      margin: EdgeInsets.all(8),
-      child:
-          // ignore: deprecated_member_use
-          RaisedButton(
+    return Column(children: [
+      RaisedButton(
         onPressed: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) => viewpdf));
         },
-        shape:
-            //RoundedRectangleBorder(borderRadius: BorderRadius.circular(05.0)),
-            RoundedRectangleBorder(
-                side: BorderSide(color: Colors.green, width: 1)),
+        shape: RoundedRectangleBorder(
+            side: BorderSide(color: Color(0xFF233329), width: 1)),
         padding: EdgeInsets.all(1.0),
         child: Ink(
           decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  const Color(0xFF166D3B),
-                  const Color(0xFF166D3B),
+                  const Color(0xFF233329),
+                  const Color(0xFF63d471),
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
               ),
               borderRadius: BorderRadius.circular(00.0)),
           child: Container(
-            constraints: BoxConstraints(maxWidth: 170.0, minHeight: 30.0),
+            width: MediaQuery.of(context).size.height * 0.25,
+            height: MediaQuery.of(context).size.height * 0.08,
             alignment: Alignment.center,
-            child: Directionality(
-              // add this
-              textDirection: TextDirection.rtl, // set this property
-              child: Text(
-                link,
-                style: TextStyle(
-                  fontFamily: 'Kufi',
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+            child: Text(
+              link,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'Kufi',
+                fontSize: MediaQuery.of(context).size.height * 0.015,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
         ),
       ),
-    );
+      SizedBox(
+        height: 15,
+      ),
+    ]
+        // ignore: deprecated_member_use
+
+        );
   }
 }

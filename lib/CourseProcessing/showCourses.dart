@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myEduApp/main/NetworkCheck.dart';
+import 'package:myEduApp/main/devicesType.dart';
 import 'package:myEduApp/main/theme.dart';
 import 'package:provider/provider.dart';
 import 'getCourses.dart';
@@ -60,7 +61,9 @@ class _ShowCoursesState extends State<ShowCourses>
                                       text: "   إعدادات قارئ الملفات  ",
                                       style: TextStyle(
                                         fontFamily: 'Kufi',
-                                        fontSize: 10,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.022,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                       )),
@@ -137,6 +140,8 @@ class _ShowCoursesState extends State<ShowCourses>
 
   @override
   Widget build(BuildContext context) {
+    devicesType _devicesType = new devicesType();
+    String devType = _devicesType.getDeviceType();
     NetworkCheck networkChecker = new NetworkCheck();
     // to remove space beteween words of sp var
     if (widget.sp == '            آداب و فلسفة') {
@@ -242,20 +247,34 @@ class _ShowCoursesState extends State<ShowCourses>
                   Tab(
                     child: Text(
                       "فصل 1",
-                      style: TextStyle(fontFamily: 'Kufi'),
+                      style: TextStyle(
+                        fontFamily: 'Kufi',
+                        fontSize: MediaQuery.of(context).size.height * 0.017,
+                      ),
                     ),
                   ),
                   Tab(
                     child: Text(
                       "2 فصل",
-                      style: TextStyle(fontFamily: 'Kufi'),
+                      style: TextStyle(
+                        fontFamily: 'Kufi',
+                        fontSize: MediaQuery.of(context).size.height * 0.017,
+                      ),
                     ),
                   ),
                   Tab(
-                    child: Text("3 فصل", style: TextStyle(fontFamily: 'Kufi')),
+                    child: Text("3 فصل",
+                        style: TextStyle(
+                          fontFamily: 'Kufi',
+                          fontSize: MediaQuery.of(context).size.height * 0.017,
+                        )),
                   ),
                   Tab(
-                    child: Text("مرفقات", style: TextStyle(fontFamily: 'Kufi')),
+                    child: Text("مرفقات",
+                        style: TextStyle(
+                          fontFamily: 'Kufi',
+                          fontSize: MediaQuery.of(context).size.height * 0.017,
+                        )),
                   )
                 ],
                 indicatorColor: Colors.orange,
@@ -272,10 +291,27 @@ class _ShowCoursesState extends State<ShowCourses>
                       child: Column(
                     children: [
                       Text(''),
-                      Text(
-                        'قائمة الفروض و الإختبارات',
-                        style: TextStyle(
-                            fontFamily: 'Kufi', fontWeight: FontWeight.bold),
+                      devType == 'isPhone'
+                          ? Text(
+                              'قائمة الفروض و الإختبارات',
+                              style: TextStyle(
+                                fontFamily: 'Kufi',
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.05,
+                              ),
+                            )
+                          : Text(
+                              'قائمة الفروض و الإختبارات',
+                              style: TextStyle(
+                                fontFamily: 'Kufi',
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.015,
+                              ),
+                            ),
+                      SizedBox(
+                        height: 20,
                       ),
                       FutureBuilder(
                         future: networkChecker.isInternet(),
@@ -283,14 +319,48 @@ class _ShowCoursesState extends State<ShowCourses>
                           if (snapshot.hasData) {
                             if (snapshot.data.toString() == 'true') {
                               // its mean that is a good inernet connection
-                              return Text(
-                                'إذا قمت بحفظ ملفات في هذا القسم،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
-                                style: TextStyle(
-                                    fontFamily: 'Kufi',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 8,
-                                    color: Colors.orange),
-                              );
+                              return Center(
+                                  child: Column(
+                                children: [
+                                  devType == 'isPhone'
+                                      ? Text(
+                                          'إذا قمت بحفظ ملفات في هذا القسم ،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: 'Kufi',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.022,
+                                              color: Colors.orange),
+                                        )
+                                      : Text(
+                                          'إذا قمت بحفظ ملفات في هذا القسم ،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: 'Kufi',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                              color: Colors.orange),
+                                        ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Divider(
+                                          height: 25,
+                                          endIndent: 50,
+                                          indent: 50,
+                                          color: Colors.white)
+                                    ],
+                                  ),
+                                ],
+                              ));
                             } else {
                               // no iternet connection
                               return Text(
@@ -326,10 +396,27 @@ class _ShowCoursesState extends State<ShowCourses>
                       child: Column(
                     children: [
                       Text(''),
-                      Text(
-                        'قائمة الفروض و الإختبارات',
-                        style: TextStyle(
-                            fontFamily: 'Kufi', fontWeight: FontWeight.bold),
+                      devType == 'isPhone'
+                          ? Text(
+                              'قائمة الفروض و الإختبارات',
+                              style: TextStyle(
+                                fontFamily: 'Kufi',
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.05,
+                              ),
+                            )
+                          : Text(
+                              'قائمة الفروض و الإختبارات',
+                              style: TextStyle(
+                                fontFamily: 'Kufi',
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.015,
+                              ),
+                            ),
+                      SizedBox(
+                        height: 20,
                       ),
                       FutureBuilder(
                         future: networkChecker.isInternet(),
@@ -337,14 +424,48 @@ class _ShowCoursesState extends State<ShowCourses>
                           if (snapshot.hasData) {
                             if (snapshot.data.toString() == 'true') {
                               // its mean that is a good inernet connection
-                              return Text(
-                                'إذا قمت بحفظ ملفات في هذا القسم،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
-                                style: TextStyle(
-                                    fontFamily: 'Kufi',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 8,
-                                    color: Colors.orange),
-                              );
+                              return Center(
+                                  child: Column(
+                                children: [
+                                  devType == 'isPhone'
+                                      ? Text(
+                                          'إذا قمت بحفظ ملفات في هذا القسم ،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: 'Kufi',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.022,
+                                              color: Colors.orange),
+                                        )
+                                      : Text(
+                                          'إذا قمت بحفظ ملفات في هذا القسم ،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: 'Kufi',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                              color: Colors.orange),
+                                        ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Divider(
+                                          height: 25,
+                                          endIndent: 50,
+                                          indent: 50,
+                                          color: Colors.white)
+                                    ],
+                                  ),
+                                ],
+                              ));
                             } else {
                               // no iternet connection
                               return Text(
@@ -379,11 +500,30 @@ class _ShowCoursesState extends State<ShowCourses>
                   Center(
                       child: Column(
                     children: [
-                      Text(''),
-                      Text(
-                        'قائمة الفروض و الإختبارات',
-                        style: TextStyle(
-                            fontFamily: 'Kufi', fontWeight: FontWeight.bold),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      devType == 'isPhone'
+                          ? Text(
+                              'قائمة الفروض و الإختبارات',
+                              style: TextStyle(
+                                fontFamily: 'Kufi',
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.05,
+                              ),
+                            )
+                          : Text(
+                              'قائمة الفروض و الإختبارات',
+                              style: TextStyle(
+                                fontFamily: 'Kufi',
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.015,
+                              ),
+                            ),
+                      SizedBox(
+                        height: 20,
                       ),
                       FutureBuilder(
                         future: networkChecker.isInternet(),
@@ -391,14 +531,48 @@ class _ShowCoursesState extends State<ShowCourses>
                           if (snapshot.hasData) {
                             if (snapshot.data.toString() == 'true') {
                               // its mean that is a good inernet connection
-                              return Text(
-                                'إذا قمت بحفظ ملفات في هذا القسم،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
-                                style: TextStyle(
-                                    fontFamily: 'Kufi',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 8,
-                                    color: Colors.orange),
-                              );
+                              return Center(
+                                  child: Column(
+                                children: [
+                                  devType == 'isPhone'
+                                      ? Text(
+                                          'إذا قمت بحفظ ملفات في هذا القسم ،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: 'Kufi',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.022,
+                                              color: Colors.orange),
+                                        )
+                                      : Text(
+                                          'إذا قمت بحفظ ملفات في هذا القسم ،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: 'Kufi',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                              color: Colors.orange),
+                                        ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Divider(
+                                          height: 25,
+                                          endIndent: 50,
+                                          indent: 50,
+                                          color: Colors.white)
+                                    ],
+                                  ),
+                                ],
+                              ));
                             } else {
                               // no iternet connection
                               return Text(
@@ -429,16 +603,32 @@ class _ShowCoursesState extends State<ShowCourses>
                   ))
                 ])),
                 SingleChildScrollView(
-                    // add Expansion Tile
                     child: Column(children: [
                   Center(
                       child: Column(
                     children: [
                       Text(''),
-                      Text(
-                        ' مراجع و ملخصات و ملفات اضافية متنوعة  ',
-                        style: TextStyle(
-                            fontFamily: 'Kufi', fontWeight: FontWeight.bold),
+                      devType == 'isPhone'
+                          ? Text(
+                              ' مراجع و ملخصات و ملفات اضافية متنوعة  ',
+                              style: TextStyle(
+                                fontFamily: 'Kufi',
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.05,
+                              ),
+                            )
+                          : Text(
+                              ' مراجع و ملخصات و ملفات اضافية متنوعة  ',
+                              style: TextStyle(
+                                fontFamily: 'Kufi',
+                                fontWeight: FontWeight.bold,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.015,
+                              ),
+                            ),
+                      SizedBox(
+                        height: 20,
                       ),
                       FutureBuilder(
                         future: networkChecker.isInternet(),
@@ -446,14 +636,48 @@ class _ShowCoursesState extends State<ShowCourses>
                           if (snapshot.hasData) {
                             if (snapshot.data.toString() == 'true') {
                               // its mean that is a good inernet connection
-                              return Text(
-                                'إذا قمت بحفظ ملفات في هذا القسم،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
-                                style: TextStyle(
-                                    fontFamily: 'Kufi',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 8,
-                                    color: Colors.orange),
-                              );
+                              return Center(
+                                  child: Column(
+                                children: [
+                                  devType == 'isPhone'
+                                      ? Text(
+                                          'إذا قمت بحفظ ملفات في هذا القسم ،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: 'Kufi',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.022,
+                                              color: Colors.orange),
+                                        )
+                                      : Text(
+                                          'إذا قمت بحفظ ملفات في هذا القسم ،فعليك أن تقوم بإيقاف إتصالك بالأنترنت لتظهر لك المواضيع المحملة',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: 'Kufi',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.01,
+                                              color: Colors.orange),
+                                        ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Divider(
+                                          height: 25,
+                                          endIndent: 50,
+                                          indent: 50,
+                                          color: Colors.white)
+                                    ],
+                                  ),
+                                ],
+                              ));
                             } else {
                               // no iternet connection
                               return Text(

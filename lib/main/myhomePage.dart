@@ -24,13 +24,14 @@ class MyHomePage extends StatelessWidget {
                 ' التــعـليــم الـثـانـوي - Examens DZ ',
                 style: new TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
+                  fontSize: MediaQuery.of(context).size.height * 0.015,
                   color: Colors.orange,
                   fontFamily: 'Kufi',
                 ),
               ),
               actions: <Widget>[
-                value.getTheme() == ThemeData.light().copyWith()
+                // switched button
+                /* value.getTheme() == ThemeData.light().copyWith()
                     ? IconButton(
                         icon:
                             Icon(Icons.toggle_off_rounded), //toggle_on_outlined
@@ -47,7 +48,7 @@ class MyHomePage extends StatelessWidget {
                           Provider.of<ThemeProvider>(context, listen: false)
                               .swapTheme();
                         },
-                      ),
+                      ),*/
               ],
               flexibleSpace: Container(
                 decoration: value.getTheme() == ThemeData.light().copyWith()

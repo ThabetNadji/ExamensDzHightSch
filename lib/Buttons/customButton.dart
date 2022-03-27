@@ -25,7 +25,8 @@ class CustomBTN extends StatelessWidget {
                         text: "  لم تقم بإختيار الشعبة التي تدرسها",
                         style: TextStyle(
                             color: Colors.orange,
-                            fontSize: 12,
+                            fontSize:
+                                MediaQuery.of(context).size.width * 0.03, //13
                             fontFamily: 'Kufi',
                             fontWeight: FontWeight.bold)),
                   ],
@@ -43,13 +44,14 @@ class CustomBTN extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     WidgetSpan(
-                      child: Icon(Icons.mood_bad_sharp, size: 20),
+                      child: Icon(Icons.mood_bad_sharp,
+                          size: MediaQuery.of(context).size.width * 0.06),
                     ),
                     TextSpan(
                         text: "قم بإختيار السنة التي تريد عرض مواضيعها",
                         style: TextStyle(
                             color: Colors.orange,
-                            fontSize: 10,
+                            fontSize: MediaQuery.of(context).size.width * 0.06,
                             fontFamily: 'Kufi',
                             fontWeight: FontWeight.bold)),
                   ],

@@ -1,4 +1,5 @@
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myEduApp/Buttons/courseContentButton.dart';
 import 'package:myEduApp/Buttons/courseContentButtonMore.dart';
@@ -132,11 +133,18 @@ class GetCoursesWidget extends State<GetCoursesWidgetFull> {
               SizedBox(
                 height: 100,
               ),
-              CircularProgressIndicator(),
+              //CircularProgressIndicator(),
+              CupertinoActivityIndicator(),
               SizedBox(
                 height: 40,
               ),
-              Text('... يتم العمل على جلب البيانات '),
+              Text('... يتم العمل على جلب البيانات ',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Kufi',
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).size.width * 0.022,
+                      color: Colors.orange)),
             ],
           ));
         } else {
@@ -176,7 +184,16 @@ class GetCoursesWidget extends State<GetCoursesWidgetFull> {
                               future: getListCourses_High_More(lastFullp),
                               builder: (BuildContext context, sn) {
                                 if (!sn.hasData) {
-                                  Text('no data to load');
+                                  Text('sorry, no data to load right now ...',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily: 'Kufi',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.022,
+                                          color: Colors.orange));
                                 } else {
                                   Container(
                                       child: Column(
@@ -291,7 +308,15 @@ class GetCoursesWidget extends State<GetCoursesWidgetFull> {
       builder: (BuildContext context, snapshot) {
         if (!snapshot.hasData) {
           return new Column(
-            children: [Text('الملفات غير متوفره الآن ...')],
+            children: [
+              Text('الملفات غير متوفره الآن ...',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Kufi',
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).size.width * 0.022,
+                      color: Colors.orange))
+            ],
           );
         } else {
           return Column(
@@ -323,7 +348,8 @@ class GetCoursesWidget extends State<GetCoursesWidgetFull> {
   @override
   Widget build(BuildContext context) {
     if (widget.yearX != '') {
-      return getCoursesEnd(); // bac, bem, 5_eme
+      // bac, bem, 5_eme
+      return getCoursesEnd();
     } else {
       // normal courses
       return getCourses();

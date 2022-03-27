@@ -15,7 +15,7 @@ class InitData {
             title: Text(' -  أولى ثانوي   ',
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: MediaQuery.of(context).size.height * 0.023,
                   fontFamily: 'Kufi',
                 )),
             contentPadding: EdgeInsets.fromLTRB(20, 5, 0, 5),
@@ -31,7 +31,7 @@ class InitData {
             title: Text(' -  الثانية ثانوي   ',
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: MediaQuery.of(context).size.height * 0.023,
                   fontFamily: 'Kufi',
                 )),
             contentPadding: EdgeInsets.fromLTRB(20, 5, 0, 5),
@@ -47,7 +47,7 @@ class InitData {
             title: Text(' -  الثالثة ثانوي   ',
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: MediaQuery.of(context).size.height * 0.023,
                   fontFamily: 'Kufi',
                 )),
             contentPadding: EdgeInsets.fromLTRB(20, 5, 0, 5),

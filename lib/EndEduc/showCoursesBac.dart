@@ -24,7 +24,7 @@ class _ShowCoureses2State extends State<showCoursesBac> {
           'بكالوريا ',
           style: TextStyle(
               color: Colors.green,
-              fontSize: 16,
+              fontSize: MediaQuery.of(context).size.width * 0.037,
               fontFamily: 'Kufi',
               fontWeight: FontWeight.bold),
         )),
@@ -33,7 +33,7 @@ class _ShowCoureses2State extends State<showCoursesBac> {
           widget.speciality + ' / ' + widget.yearX + '              ',
           style: TextStyle(
               color: Colors.green,
-              fontSize: 16,
+              fontSize: MediaQuery.of(context).size.width * 0.037,
               fontFamily: 'Kufi',
               fontWeight: FontWeight.bold),
         )), //widget.speciality

@@ -24,8 +24,8 @@ class _cardHomeWidgetState extends State<cardHomeWidget> {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        height: 165,
-        width: 310,
+        height: MediaQuery.of(context).size.height * 0.28, //165, //235,
+        width: MediaQuery.of(context).size.width * 0.9, //310
         decoration: BoxDecoration(
           image: DecorationImage(
             alignment: Alignment.centerLeft,
@@ -59,7 +59,7 @@ class _cardHomeWidgetState extends State<cardHomeWidget> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: MediaQuery.of(context).size.height * 0.02,
                         fontFamily: 'Kufi',
                         fontWeight: FontWeight.bold)),
               ),
@@ -100,13 +100,18 @@ class _cardHomeWidgetState extends State<cardHomeWidget> {
                         text: TextSpan(
                           children: [
                             WidgetSpan(
-                              child: Icon(Icons.arrow_back_ios_sharp, size: 20),
+                              child: Icon(
+                                Icons.arrow_back_ios_sharp,
+                                size: MediaQuery.of(context).size.height * 0.03,
+                              ),
                             ),
                             TextSpan(
                                 text: ' ' + widget.textButton,
                                 style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 15,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.025,
                                     fontFamily: 'Kufi',
                                     fontWeight: FontWeight.bold)),
                           ],

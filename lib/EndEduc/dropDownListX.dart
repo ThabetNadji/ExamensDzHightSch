@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myEduApp/EndEduc/showCoursesBac.dart';
+import 'package:myEduApp/main/devicesType.dart';
 
 class dropDownListX extends StatefulWidget {
   String level, year;
@@ -15,15 +16,31 @@ class _dropDownListXState extends State<dropDownListX> {
   @override
   Widget build(BuildContext context) {
     String dRattrapage = '2017 دورة إستدراكية';
+    devicesType _devicesType = new devicesType();
+    String devType = _devicesType.getDeviceType();
     return Center(
       child: Wrap(
         children: [
           Center(
             child: new DropdownButton<String>(
-              hint: Text(
-                'إختر السنة التي تريد عرض مواضيعها',
-                style: TextStyle(
-                    color: Colors.orange, fontSize: 15, fontFamily: 'Kufi'),
+              hint: Center(
+                child: devType == 'isPhone'
+                    ? Text(
+                        'إختر السنة التي تريد عرض مواضيعها',
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontSize:
+                                MediaQuery.of(context).size.width * 0.037, //15
+                            fontFamily: 'Kufi'),
+                      )
+                    : Text(
+                        'إختر السنة التي تريد عرض مواضيعها',
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontSize:
+                                MediaQuery.of(context).size.width * 0.01, //15
+                            fontFamily: 'Kufi'),
+                      ),
               ),
               onChanged: (String newVal) {
                 setState(() {
@@ -50,10 +67,24 @@ class _dropDownListXState extends State<dropDownListX> {
           ),
           Center(
             child: new DropdownButton<String>(
-              hint: Text(
-                'إختر الشعبة التي تدرسها',
-                style: TextStyle(
-                    color: Colors.orange, fontSize: 15, fontFamily: 'Kufi'),
+              hint: Center(
+                child: devType == 'isPhone'
+                    ? Text(
+                        'إختر الشعبة التي تدرسها',
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontSize:
+                                MediaQuery.of(context).size.width * 0.037, //15
+                            fontFamily: 'Kufi'),
+                      )
+                    : Text(
+                        'إختر الشعبة التي تدرسها',
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontSize:
+                                MediaQuery.of(context).size.width * 0.01, //15
+                            fontFamily: 'Kufi'),
+                      ),
               ),
               //value: speciality,
               onChanged: (String newVal) {

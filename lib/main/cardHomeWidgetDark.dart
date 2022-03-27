@@ -24,8 +24,8 @@ class _cardHomeWidgetState extends State<cardHomeWidgetDark> {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        height: 165,
-        width: 310,
+        height: MediaQuery.of(context).size.height * 0.28, //165, //235,
+        width: MediaQuery.of(context).size.width * 0.9, //310
         decoration: BoxDecoration(
           image: DecorationImage(
             alignment: Alignment.centerLeft,
@@ -59,7 +59,7 @@ class _cardHomeWidgetState extends State<cardHomeWidgetDark> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: MediaQuery.of(context).size.height * 0.02,
                         fontFamily: 'Kufi',
                         fontWeight: FontWeight.bold)),
               ),
@@ -67,55 +67,40 @@ class _cardHomeWidgetState extends State<cardHomeWidgetDark> {
             Spacer(),
             Align(
               alignment: Alignment.bottomRight,
-              child: Container(
-                // ignore: deprecated_member_use
-                child: RaisedButton(
-                  onPressed: () {
-                    branch br = new branch(get_year(), get_level());
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => br));
-                  },
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.green, width: 1)),
-                  padding: EdgeInsets.all(1.0),
-                  child: Ink(
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            const Color(0xFF166D3B),
-                            const Color(0xFF166D3B),
-                          ],
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                        ),
-                        borderRadius: BorderRadius.circular(00.0)),
-                    child: Container(
-                      constraints: BoxConstraints(
-                          maxWidth: 100.0, minHeight: 35.0), // button size
-                      alignment: Alignment.center,
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            WidgetSpan(
-                              child: Icon(Icons.arrow_back_ios_sharp, size: 20),
-                            ),
-                            TextSpan(
-                                text: ' ' + widget.textButton,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontFamily: 'Kufi',
-                                    fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      ),
+              child: InkWell(
+                onTap: () {
+                  branch br = new branch(get_year(), get_level());
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) => br));
+                },
+                //shape: RoundedRectangleBorder(side: BorderSide(color: Colors.green, width: 1)),
+                //padding: EdgeInsets.all(1.0),
+                child: Ink(
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: ' BAC ',
+                            style: new TextStyle(
+                                height: 1.5,
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.025,
+                                color: Colors.green,
+                                fontFamily: 'Kufi',
+                                fontWeight: FontWeight.bold)),
+                        WidgetSpan(
+                          child: Icon(
+                            Icons.keyboard_arrow_right,
+                            size: MediaQuery.of(context).size.height * 0.03,
+                            color: Colors.green,
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

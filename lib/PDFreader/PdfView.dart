@@ -39,61 +39,36 @@ class _PdfViewState extends State<PdfView> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          SizedBox(
-            width: 600, // large
-            height: 30,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                        '  الصفحة ' +
-                            _totalPages.toString() +
-                            '/' +
-                            _actualPage.toString(),
-                        style: TextStyle(
-                            fontFamily: 'Kufi',
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green[800])),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Center(
-            child: SizedBox(
-                //width: 600,
-                //height: 550,
-                child: PDFView(
-              filePath: widget.path,
-              autoSpacing: true,
-              enableSwipe: true,
-              swipeHorizontal: false,
-              pageFling: true,
-              nightMode: viewThemeX,
-              onError: (e) {
-                print(e);
-              },
-              onRender: (_pages) {
-                setState(() {
-                  _totalPages = _pages;
-                  pdfReady = true;
-                });
-              },
-              onViewCreated: (PDFViewController vc) {
-                _pdfViewController = vc;
-              },
-              onPageChanged: (int page, int total) {
-                setState(() {
-                  _actualPage = page + 1;
-                  _showToast(context, _actualPage.toString(), total.toString());
-                });
-              },
-              onPageError: (page, e) {},
-            )),
-          ),
+          Container(
+              //width: MediaQuery.of(context).size.width,
+              //height: MediaQuery.of(context).size.height, //* 0.55,
+              child: PDFView(
+            filePath: widget.path,
+            autoSpacing: true,
+            enableSwipe: true,
+            swipeHorizontal: false,
+            pageFling: true,
+            nightMode: viewThemeX,
+            onError: (e) {
+              print(e);
+            },
+            onRender: (_pages) {
+              setState(() {
+                _totalPages = _pages;
+                pdfReady = true;
+              });
+            },
+            onViewCreated: (PDFViewController vc) {
+              _pdfViewController = vc;
+            },
+            onPageChanged: (int page, int total) {
+              setState(() {
+                _actualPage = page + 1;
+                _showToast(context, _actualPage.toString(), total.toString());
+              });
+            },
+            onPageError: (page, e) {},
+          )),
           !pdfReady
               ? Center(
                   child: Text(

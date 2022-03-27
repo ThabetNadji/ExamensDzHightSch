@@ -96,7 +96,9 @@ class _FirstYearsState extends State<listCoursesHiegh_> {
                                 'فروض،إختبارات، ملخصات، دروس و الكثير من الملفات المفيدة في جميع المواد و لجميع الشعب',
                                 textAlign: TextAlign.center,
                                 style: new TextStyle(
-                                    fontSize: 12.0,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.03,
                                     color: Colors.green,
                                     fontFamily: 'Kufi')),
                           ),
@@ -115,7 +117,8 @@ class _FirstYearsState extends State<listCoursesHiegh_> {
                           'إختر الشعبة التي تدرسها',
                           style: TextStyle(
                               color: Colors.orange,
-                              fontSize: 15,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.04,
                               fontFamily: 'Kufi'),
                         ),
                         onChanged: (String newVal) {

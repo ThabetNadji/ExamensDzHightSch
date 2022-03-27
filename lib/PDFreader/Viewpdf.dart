@@ -95,14 +95,16 @@ class _ViewpdfState extends State<Viewpdf> {
               title: widget.tri != 'xmore'
                   ? Text(' النموذج رقم ' + widget.num_sub,
                       style: TextStyle(
-                          fontFamily: 'Kufi',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20))
+                        fontFamily: 'Kufi',
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).size.height * 0.023,
+                      ))
                   : Text(link,
                       style: TextStyle(
-                          fontFamily: 'Kufi',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20)),
+                        fontFamily: 'Kufi',
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).size.height * 0.023,
+                      )),
               leading: InkWell(
                 onTap: () {
                   Navigator.pop(context);
@@ -121,9 +123,11 @@ class _ViewpdfState extends State<Viewpdf> {
                         label: Text(
                           'حفظ الملف',
                           style: TextStyle(
-                              fontFamily: 'Kufi',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12),
+                            fontFamily: 'Kufi',
+                            fontWeight: FontWeight.bold,
+                            fontSize:
+                                MediaQuery.of(context).size.height * 0.015,
+                          ),
                         ),
                         icon: Icon(
                           Icons.download_sharp,
@@ -145,7 +149,8 @@ class _ViewpdfState extends State<Viewpdf> {
                           style: TextStyle(
                               fontFamily: 'Kufi',
                               fontWeight: FontWeight.bold,
-                              fontSize: 12),
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.015),
                         ),
                         icon: Icon(
                           Icons.download_sharp,
@@ -203,8 +208,8 @@ class _ViewpdfState extends State<Viewpdf> {
               children: <Widget>[
                 Center(
                   child: SizedBox(
-                    width: 600,
-                    height: 670,
+                    width: MediaQuery.of(context).size.width * 4,
+                    height: MediaQuery.of(context).size.height * 4,
                     child: Consumer<MyViewModel>(
                       builder: (context, myViewModel, child) {
                         if (myViewModel.getDownloadProgress() < 100) {

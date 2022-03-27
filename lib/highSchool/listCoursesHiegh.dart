@@ -92,7 +92,8 @@ class _FirstYearsState extends State<listCoursesHiegh> {
                             'فروض،إختبارات، ملخصات، دروس و الكثير من الملفات المفيدة في جميع المواد و لجميع الشعب',
                             textAlign: TextAlign.center,
                             style: new TextStyle(
-                                fontSize: 12.0,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.03,
                                 color: Colors.green,
                                 fontFamily: 'Kufi')),
                       ),
@@ -110,14 +111,14 @@ class _FirstYearsState extends State<listCoursesHiegh> {
                     ? Text(
                         'قائمة المواد',
                         style: new TextStyle(
-                            fontSize: 20.0,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
                             color: Colors.black,
                             fontFamily: 'Kufi'),
                       )
                     : Text(
                         'قائمة المواد',
                         style: new TextStyle(
-                            fontSize: 20.0,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
                             color: Colors.white,
                             fontFamily: 'Kufi'),
                       ),
