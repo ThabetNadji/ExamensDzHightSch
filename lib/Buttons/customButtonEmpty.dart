@@ -24,9 +24,7 @@ class CustomButtonEmpty extends StatelessWidget {
         width: 130,
         height: 45,
         // ignore: deprecated_member_use
-        child: RaisedButton.icon(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        child: ElevatedButton.icon(
           label: Text(
             courseName,
             style: TextStyle(color: Colors.white),
@@ -35,9 +33,10 @@ class CustomButtonEmpty extends StatelessWidget {
             icon,
             color: Colors.white,
           ),
-          textColor: Colors.white,
-          splashColor: Colors.red,
-          color: const Color(0xFF166D3B),
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 22, 133, 66),
+            onPrimary: const Color(0xFF63d471),
+          ),
           onPressed: () {
             _showAlert(context);
           },

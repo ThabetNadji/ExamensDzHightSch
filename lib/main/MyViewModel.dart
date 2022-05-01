@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+//import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
 import 'Myflushbar.dart';
 
@@ -129,7 +129,7 @@ class MyViewModel extends ChangeNotifier {
             ' نعتذر، خاصية حفظ ملفات شهادة البكالوريا غير متوفره الآن ،سيتم إضافتها في الإصدارات القادمة ',
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
-        timeInSecForIos: 4,
+        //timeInSecForIos: 4,
         backgroundColor: Colors.red,
         textColor: Colors.white,
         fontSize: 16.0);

@@ -32,9 +32,9 @@ class CustomAlertDialog extends StatelessWidget {
           borderRadius: BorderRadius.circular(circularBorderRadius)),
       actions: <Widget>[
         negativeBtnText != null
-            ? FlatButton(
+            ? TextButton(
                 child: Text(negativeBtnText),
-                textColor: Theme.of(context).accentColor,
+                // textColor: Theme.of(context).accentColor,
                 onPressed: () {
                   Navigator.of(context).pop();
                   if (onNegativePressed != null) {
@@ -44,9 +44,9 @@ class CustomAlertDialog extends StatelessWidget {
               )
             : null,
         positiveBtnText != null
-            ? FlatButton(
+            ? TextButton(
                 child: Text(positiveBtnText),
-                textColor: Theme.of(context).accentColor,
+                //textColor: Theme.of(context).accentColor,
                 onPressed: () {
                   if (onPostivePressed != null) {
                     onPostivePressed();

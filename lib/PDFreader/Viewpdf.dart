@@ -1,12 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-//import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
-//import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:myEduApp/main/MyViewModel.dart';
 import 'package:myEduApp/main/theme.dart';
 import 'package:provider/provider.dart';
-//import 'package:provider_architecture/_viewmodel_provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import 'PdfView.dart';
@@ -116,15 +113,17 @@ class _ViewpdfState extends State<Viewpdf> {
               ),
               actions: <Widget>[
                 widget.tri != ""
-                    ? RaisedButton.icon(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
+                    ? ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.orange,
+                          onPrimary: const Color(0xFF63d471),
+                        ),
                         label: Text(
                           'حفظ الملف',
                           style: TextStyle(
                             fontFamily: 'Kufi',
                             fontWeight: FontWeight.bold,
+                            color: Colors.white,
                             fontSize:
                                 MediaQuery.of(context).size.height * 0.015,
                           ),
@@ -133,22 +132,21 @@ class _ViewpdfState extends State<Viewpdf> {
                           Icons.download_sharp,
                           color: Colors.white,
                         ),
-                        textColor: Colors.white,
-                        splashColor: Colors.orange[300],
-                        color: Colors.orange,
                         onPressed: () {
                           myViewModel.savingFile(fullPathFile, link2, context);
                         },
                       )
-                    : RaisedButton.icon(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
+                    : ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.orange,
+                          onPrimary: const Color(0xFF63d471),
+                        ),
                         label: Text(
                           'حفظ الملف',
                           style: TextStyle(
                               fontFamily: 'Kufi',
                               fontWeight: FontWeight.bold,
+                              color: Colors.white,
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.015),
                         ),
@@ -156,9 +154,6 @@ class _ViewpdfState extends State<Viewpdf> {
                           Icons.download_sharp,
                           color: Colors.white,
                         ),
-                        textColor: Colors.white,
-                        splashColor: Colors.orange[300],
-                        color: Colors.orange,
                         onPressed: () {
                           myViewModel.savingFileBEM(fullPathFile, link2);
                         },
@@ -215,7 +210,7 @@ class _ViewpdfState extends State<Viewpdf> {
                         if (myViewModel.getDownloadProgress() < 100) {
                           return Center(
                               child: CircularPercentIndicator(
-                            radius: 220.0,
+                            radius: MediaQuery.of(context).size.width * 0.30,
                             lineWidth: 10.0,
                             percent:
                                 (myViewModel.getDownloadProgress().toDouble()) /

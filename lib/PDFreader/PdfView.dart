@@ -23,7 +23,7 @@ class _PdfViewState extends State<PdfView> {
         msg: ' الصفحة ' + _actualPage + ' / ' + totalPage,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        timeInSecForIos: 2,
+        //timeInSecForIos: 2,
         backgroundColor: Colors.green,
         textColor: Colors.white,
         fontSize: 16.0);

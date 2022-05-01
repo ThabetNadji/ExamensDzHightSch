@@ -27,7 +27,7 @@ class _ShowCoureses2State extends State<ShowCoureses_> {
               Center(
                 child: value.getTheme() == ThemeData.light().copyWith()
                     ? Text(
-                        'قائمة المواد',
+                        'قائمة المواد ',
                         style: new TextStyle(
                             fontSize: 20.0,
                             color: Colors.black,

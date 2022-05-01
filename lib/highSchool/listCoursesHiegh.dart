@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/Buttons/customButton.dart';
 import 'package:myEduApp/main/theme.dart';
 import 'package:provider/provider.dart';
+
+import '../ad_helper/ad_helper.dart';
 
 // ignore: must_be_immutable
 class listCoursesHiegh extends StatefulWidget {
@@ -12,6 +15,17 @@ class listCoursesHiegh extends StatefulWidget {
 }
 
 class _FirstYearsState extends State<listCoursesHiegh> {
+  // set ads
+  @override
+  void initState() {
+    // TODO: implement initState
+    AdHelper.disposeAd();
+    AdHelper.myBanner.load();
+    super.initState();
+  }
+
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+  // and set ads
   String speciality = 'noChanged';
   @override
   Widget build(BuildContext context) {
@@ -75,6 +89,11 @@ class _FirstYearsState extends State<listCoursesHiegh> {
                             BorderRadius.circular(0), //border corner radius
                       ),
               ),
+            ),
+            bottomNavigationBar: Container(
+              height: 50,
+              color: Colors.black38,
+              child: adWidget,
             ),
             body: Column(
               children: <Widget>[
@@ -240,5 +259,3 @@ class _FirstYearsState extends State<listCoursesHiegh> {
     );
   }
 }
-
-/*  */

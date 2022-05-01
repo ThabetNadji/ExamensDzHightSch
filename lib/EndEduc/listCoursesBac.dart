@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/main/devicesType.dart';
 import 'package:myEduApp/main/theme.dart';
 import 'package:provider/provider.dart';
+import '../ad_helper/ad_helper.dart';
 import 'dropDownListX.dart';
 
 // ignore: must_be_immutable
@@ -14,6 +16,15 @@ class listCoursesBac extends StatefulWidget {
 }
 
 class _FirstYearsState extends State<listCoursesBac> {
+  @override
+  void initState() {
+    AdHelper.disposeAd();
+    AdHelper.myBanner.load();
+    super.initState();
+  }
+
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+
   String speciality = '_';
   String yearX = '';
   devicesType _devicesType = new devicesType();
@@ -80,6 +91,11 @@ class _FirstYearsState extends State<listCoursesBac> {
                             BorderRadius.circular(0), //border corner radius
                       ),
               ),
+            ),
+            bottomNavigationBar: Container(
+              height: 50,
+              color: Colors.black38,
+              child: adWidget,
             ),
             body: SingleChildScrollView(
               child: Column(

@@ -69,7 +69,7 @@ class _cardHomeWidgetState extends State<cardHomeWidget> {
               alignment: Alignment.bottomRight,
               child: Container(
                 // ignore: deprecated_member_use
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () {
                     branch br = new branch(get_year(), get_level());
 
@@ -78,9 +78,6 @@ class _cardHomeWidgetState extends State<cardHomeWidget> {
                         MaterialPageRoute(
                             builder: (BuildContext context) => br));
                   },
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.green[800], width: 1)),
-                  padding: EdgeInsets.all(1.0),
                   child: Ink(
                     decoration: BoxDecoration(
                         gradient: LinearGradient(

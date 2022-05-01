@@ -15,7 +15,7 @@ class courseContentButtonOffLign extends StatelessWidget {
 
     return SizedBox.fromSize(
       size: Size(75, 50), // button width and height
-      child: FlatButton(
+      child: TextButton(
         onPressed: () {
           Navigator.push(
               context,
@@ -26,11 +26,26 @@ class courseContentButtonOffLign extends StatelessWidget {
                         tri: tri,
                       )));
         },
-        color: Colors.orange,
-        padding: EdgeInsets.all(1.0),
+        //color: Colors.orange,
+        //padding: EdgeInsets.all(1.0),
         child: Column(
           // Replace with a Row for horizontal icon + text
-          children: <Widget>[Icon(Icons.arrow_forward), Text("تصفح")],
+          children: <Widget>[
+            Icon(
+              Icons.arrow_forward,
+              size: MediaQuery.of(context).size.width * 0.032,
+              color: Colors.orange,
+            ),
+            Text(
+              "تصفح",
+              style: TextStyle(
+                fontFamily: 'Kufi',
+                fontWeight: FontWeight.bold,
+                color: Colors.orange,
+                fontSize: MediaQuery.of(context).size.height * 0.015,
+              ),
+            )
+          ],
         ),
       ),
     );

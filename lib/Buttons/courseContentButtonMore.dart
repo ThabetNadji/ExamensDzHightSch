@@ -26,25 +26,16 @@ class CourseContentButtonMore extends StatelessWidget {
     }
 
     return Column(children: [
-      RaisedButton(
+      ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Color.fromARGB(255, 22, 133, 66),
+          onPrimary: const Color(0xFF63d471),
+        ),
         onPressed: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) => viewpdf));
         },
-        shape: RoundedRectangleBorder(
-            side: BorderSide(color: Color(0xFF233329), width: 1)),
-        padding: EdgeInsets.all(1.0),
         child: Ink(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  const Color(0xFF233329),
-                  const Color(0xFF63d471),
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-              ),
-              borderRadius: BorderRadius.circular(00.0)),
           child: Container(
             width: MediaQuery.of(context).size.height * 0.25,
             height: MediaQuery.of(context).size.height * 0.08,
@@ -54,6 +45,7 @@ class CourseContentButtonMore extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'Kufi',
+                color: Colors.white,
                 fontSize: MediaQuery.of(context).size.height * 0.015,
                 fontWeight: FontWeight.bold,
               ),

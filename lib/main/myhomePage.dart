@@ -1,16 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/main/theme.dart';
 import 'package:provider/provider.dart';
 import '../SideDrawer/sideDrawer.dart';
+import '../ad_helper/ad_helper.dart';
 import 'cardHomeWidget.dart';
 import 'cardHomeWidgetDark.dart';
 import 'package:intl/intl.dart';
 import 'dart:ui' as ui;
 
-class MyHomePage extends StatelessWidget {
-  int estimateTs = DateTime(2022, 06, 20, 00, 00, 00)
-      .millisecondsSinceEpoch; // set needed date
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
+class _MyHomePageState extends State<MyHomePage> {
+  int estimateTs = DateTime(2022, 06, 12, 00, 00, 00).millisecondsSinceEpoch;
+  // set needed date
+
+  // set ads
+  @override
+  void initState() {
+    // TODO: implement initState
+    //AdHelper.disposeAd();
+    AdHelper.myBanner.load();
+    super.initState();
+  }
+
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+  // and set ads
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, value, child) {
@@ -87,6 +105,11 @@ class MyHomePage extends StatelessWidget {
                             BorderRadius.circular(0), //border corner radius
                       ),
               ),
+            ),
+            bottomNavigationBar: Container(
+              height: 50,
+              color: Colors.black38,
+              child: adWidget,
             ),
             body: SingleChildScrollView(
               child: Stack(

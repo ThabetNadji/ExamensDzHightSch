@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/main/NetworkCheck.dart';
 import 'package:myEduApp/main/devicesType.dart';
 import 'package:myEduApp/main/theme.dart';
 import 'package:provider/provider.dart';
+import '../ad_helper/ad_helper.dart';
 import 'getCourses.dart';
 import 'package:myEduApp/PDFreader/PdfView.dart';
 import 'package:myEduApp/main/MyViewModel.dart';
@@ -24,8 +26,12 @@ class _ShowCoursesState extends State<ShowCourses>
   @override
   void initState() {
     _tabController = TabController(length: 4, vsync: this);
+    AdHelper.disposeAd();
+    AdHelper.myBanner.load();
     super.initState();
   }
+
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
 
   // ignore: unused_element
   void _showAlert(BuildContext context) {
@@ -282,6 +288,11 @@ class _ShowCoursesState extends State<ShowCourses>
                 controller: _tabController,
               ),
               bottomOpacity: 1,
+            ),
+            bottomNavigationBar: Container(
+              height: 50,
+              color: Colors.black38,
+              child: adWidget,
             ),
             body: TabBarView(
               children: <Widget>[

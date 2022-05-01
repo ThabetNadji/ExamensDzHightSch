@@ -67,7 +67,11 @@ class CustomBTN extends StatelessWidget {
         width: 130,
         height: 45,
         // ignore: deprecated_member_use
-        child: RaisedButton.icon(
+        child: ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 22, 133, 66),
+            onPrimary: const Color(0xFF63d471),
+          ),
           onPressed: () {
             if (sp == 'noChanged') {
               _showAlert(context);
@@ -96,8 +100,6 @@ class CustomBTN extends StatelessWidget {
               }
             }
           },
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0))),
           label: Text(
             courseName,
             style: TextStyle(
@@ -110,9 +112,6 @@ class CustomBTN extends StatelessWidget {
             icon,
             color: Colors.white,
           ),
-          textColor: Colors.white,
-          splashColor: Colors.red,
-          color: const Color(0xFF166D3B),
         ));
   }
 }

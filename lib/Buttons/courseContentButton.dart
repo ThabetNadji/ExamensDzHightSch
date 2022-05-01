@@ -16,25 +16,16 @@ class CourseContentButton extends StatelessWidget {
     }
     return Column(
       children: [
-        RaisedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 22, 133, 66),
+            onPrimary: const Color(0xFF63d471),
+          ),
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) => viewpdf));
           },
-          shape: RoundedRectangleBorder(
-              side: BorderSide(color: Color(0xFF233329), width: 0)),
-          padding: EdgeInsets.all(0.0),
           child: Ink(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    const Color(0xFF233329),
-                    const Color(0xFF63d471),
-                  ],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                ),
-                borderRadius: BorderRadius.all(Radius.circular(0.0))),
             child: Container(
               width: MediaQuery.of(context).size.height * 0.25,
               height: MediaQuery.of(context).size.height * 0.08,
