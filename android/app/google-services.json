@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "652724746045",
+    "project_id": "myeducapphighschool-c5d4c",
+    "storage_bucket": "myeducapphighschool-c5d4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652724746045:android:940b788a7aff02801cf754",
+        "android_client_info": {
+          "package_name": "com.Secondaire.ExamensDZ"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652724746045-3238sn6qej72a3rtdto44fosfp17vmcc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbcpJ_B_YxdfDu1NRxXoBumqQqRZN6ATQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652724746045-3238sn6qej72a3rtdto44fosfp17vmcc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
